@@ -24,12 +24,11 @@ app.use((request, response, next) => {
 });
 
 app.use(cookieParser()); // Middleware
-
-const corsOptions = {
-    origin: process.env.CLIENT_ENDPOINT,
+app.use(cors({
+    origin: "http://localhost:3000",
     credentials: true
-};
-app.use(cors(corsOptions));
+}));
+
 
 app.use('/auth', authRoutes);
 app.use('/links', linksRoutes);
