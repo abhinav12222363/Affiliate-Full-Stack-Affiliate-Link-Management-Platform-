@@ -1,189 +1,217 @@
-🚀 Affiliate Link Management & Payment Platform
+# 🚀 Affiliate Link Management & Payment Platform
 
-A full-stack SaaS-based Affiliate Link Management System that enables creators, marketers, and businesses to generate, categorize, and track affiliate links with real-time analytics, automated payments, and a secure authentication system.
-The platform is built for scalability, speed, and ease of use with modern web technologies.
+A full-stack SaaS-based **Affiliate Link Management System** that enables creators, marketers, and businesses to generate, categorize, and track affiliate links with real-time analytics, automated payments, and secure authentication.
 
-📌 Table of Contents
+The platform is built for **scalability**, **speed**, and **ease of use**, powered by modern web technologies and production-ready containerization.
 
-Features
+---
 
-Tech Stack
+## 📌 Table of Contents
 
-Architecture
+- Features
+- Tech Stack
+- Architecture
+- Installation (Local)
+- Installation (Docker)
+- Environment Variables
+- API Endpoints
+- Future Enhancements
+- Contributing
+- License
+- Contact
 
-Installation & Setup
+---
 
-API Endpoints
+## 🔥 Features
 
-Future Enhancements
+### ✅ Authentication & Authorization
+- OAuth 2.0 (Google Login)
+- JWT-based session security
+- RBAC (Role-Based Access Control)
+- Pagination
 
-Contributing
+### 🔗 Affiliate Link Management
+- Create & manage affiliate links
+- Real-time click tracking
+- UTM analytics
+- Expiry & redirect rules
 
-License
+### 📊 Analytics Dashboard
+- Clicks, conversions, revenue
+- Top performing links
+- Device & IP tracking (optional)
 
-Contact
+### 💰 Automated Payments
+- Razorpay integration
+- Webhook-based order handling
+- Auto wallet updates
+- Subscription plans
 
-🔥 Features
-✅ Authentication & Authorization
+### 📂 User & Category Management
+- Category-based link organization
+- Multi-user & multi-company support
 
-OAuth 2.0 + Google Login
+### 🛡 Security
+- Encrypted sensitive data
+- Secure API routes
+- Input validation + rate limiting
 
-JWT-based secure session management
+### 📱 Fully Responsive UI
+- Modern dashboards
+- Mobile-ready layouts
 
-RBAC (Role-Based Access Control) with parent–child role hierarchy
+---
 
-🔗 Affiliate Link Management
+## 🛠 Tech Stack
 
-Create, categorize, and manage affiliate links
+### Frontend
+- ⚛ React.js
+- 🧰 Redux Toolkit
+- 🎨 Tailwind CSS / Material UI
 
-Real-time click tracking
+### Backend
+- 🚀 Node.js + Express.js
+- 🗄 MongoDB (Mongoose ORM)
+- 🔗 REST API
 
-UTM-based performance analytics
+### Authentication
+- 🔑 Google OAuth 2.0
+- 🔐 JWT auth
+- 🛂 RBAC access control
 
-Expiry & redirect rules
+### Payments
+- 💳 Razorpay + Webhooks
 
-📊 Analytics Dashboard
+### DevOps
+- 🐳 Docker (Full containerization)
+- 🔧 CI/CD (GitHub Actions Ready)
 
-Real-time charts for clicks, conversions, revenue
+---
 
-Top-performing links
+## 🏗 Architecture
 
-Device/IP tracking (optional)
-
-💰 Automated Payments
-
-Razorpay Integration
-
-Webhook-driven credit flow
-
-Automated wallet update after successful transactions
-
-Subscription plans for users
-
-📂 User & Category Management
-
-Add/manage categories
-
-Multi-user & multi-company support
-
-🛡 Security
-
-Encrypted sensitive data
-
-Secure API endpoints
-
-Input validation + rate limiting
-
-📱 Fully Responsive UI
-
-Modern dashboards
-
-Mobile-friendly layouts
-
-🛠 Tech Stack
-Frontend
-
-⚛ React.js
-
-🧰 Redux 
-
-🎨 Tailwind CSS
-
-Backend
-
-🚀 Node.js + Express.js
-
-🗄 MongoDB (Mongoose ORM)
-
-🔗 REST API Architecture
-
-Authentication
-
-🔑 OAuth 2.0 (Google SSO)
-
-🔐 JWT Token Authentication
-
-🛂 RBAC Access Control
-
-Payments
-
-💳 Razorpay + Webhooks
-
-DevOps
-
-🐳 Docker (full app containerization)
-
-🔧 CI/CD (GitHub Actions optional)
-
-🏗 Architecture
 Frontend (React + Redux)
-        ↓ REST API
+↓ REST API
 Backend (Node.js + Express)
-        ↓
-Database (MongoDB)
-        ↓
+↓
+Database (MongoDB Atlas)
+↓
 Payment Gateway (Razorpay)
-        ↓ Webhooks
+↓ Webhooks
 DevOps (Docker, CI/CD)
 
-⚙ Installation & Setup
-📌 Prerequisites
 
-Node.js & npm
+---
 
-MongoDB
+# ⚙ Installation & Setup (Local Development)
 
-Razorpay Keys
+### 📌 Prerequisites
+- Node.js & npm
+- MongoDB (Cloud or Local)
+- Razorpay Keys
+- Google OAuth Client ID
 
-Google OAuth Client ID
-
-1️⃣ Clone the Repository
-git clone https://github.com/abhinav12222363/Affiliate-Full-Stack-Affiliate-Link-Management-Platform-
+### 1️⃣ Clone Repository
+```sh
+git clone https://github.com/abhinav12222363/Affiliate-Full-Stack-Affiliate-Link-Management-Platform-.git
 cd Affiliate-Full-Stack-Affiliate-Link-Management-Platform-
 
-2️⃣ Install Dependencies
+2️⃣ Install Backend Dependencies
 npm install
 
-3️⃣ Create a .env File
+3️⃣ Configure Environment File
+
+Create .env in /server:
+
+PORT=5001
 MONGO_URI=your_mongo_uri
 JWT_SECRET=your_secret
+CLIENT_URL=http://localhost:3000
 RAZORPAY_KEY_ID=your_key
 RAZORPAY_KEY_SECRET=your_secret
 GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-4️⃣ Run the Backend
+4️⃣ Run Backend
 npm start
 
-5️⃣ Run the Frontend
+5️⃣ Run Frontend
 cd client
 npm install
 npm start
 
+🐳 Docker Setup (Production Recommended)
+📌 Prerequisites
+
+Docker
+
+Docker Compose (optional)
+
+1️⃣ Backend Docker Image
+docker build -t affiliate-backend ./server
+docker run -p 5001:5001 --env-file ./server/.env affiliate-backend
+
+2️⃣ Frontend Docker Image
+docker build -t affiliate-frontend ./client
+docker run -p 3000:80 affiliate-frontend
+
+🐳 Docker Compose Setup (Full Stack)
+
+Create docker-compose.yml:
+
+version: "3.9"
+services:
+  backend:
+    build: ./server
+    ports:
+      - "5001:5001"
+    env_file:
+      - ./server/.env
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./client
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo:6
+    restart: always
+    ports:
+      - "27017:27017"
+
+
+Run full stack:
+
+docker compose up --build -d
+
 📡 API Endpoints
 Auth Routes
 Method	Endpoint	Description
-POST	/api/auth/register	Register a new user
-POST	/api/auth/login	Login user (JWT)
-GET	/api/auth/google	Google OAuth Login
+POST	/api/auth/login	Login user
+POST	/api/auth/register	Register
+GET	/api/auth/google	Google OAuth
 Affiliate Link Routes
 Method	Endpoint	Description
-POST	/api/link/create	Create new affiliate link
+POST	/api/link/create	Create new link
 GET	/api/link/all	Get all links
 GET	/api/link/:id	Get link details
 PUT	/api/link/update/:id	Update link
 DELETE	/api/link/delete/:id	Delete link
 Payment Routes
 Method	Endpoint	Description
-POST	/api/pay/order	Create payment order
-POST	/api/pay/webhook	Razorpay webhook listener
+POST	/api/pay/order	Create Razorpay order
+POST	/api/pay/webhook	Payment webhook
 🚀 Future Enhancements
 
 📌 Multi-currency support
 
 📱 Mobile App (React Native)
 
-🧠 AI-based link performance prediction
+🧠 AI performance predictions
 
 🎯 Affiliate marketplace system
 
@@ -194,7 +222,7 @@ POST	/api/pay/webhook	Razorpay webhook listener
 🤝 Contributing
 
 Contributions are welcome!
-Feel free to fork the repo, create a branch, and submit a pull request.
+Feel free to fork, create a branch, and submit a PR.
 
 📜 License
 
@@ -203,9 +231,8 @@ This project is licensed under the MIT License.
 📬 Contact
 
 Abhinav Prakash
-📧 Email: abhinavkumar8789@gmail.com
 
+📧 Email: abhinavkumar8789@gmail.com
 🌐 GitHub: https://github.com/abhinav12222363
 
-🔗 Project Link:
-https://github.com/abhinav12222363/Affiliate-Full-Stack-Affiliate-Link-Management-Platform-
+🔗 Project Link: https://github.com/abhinav12222363/Affiliate-Full-Stack-Affiliate-Link-Management-Platform-
