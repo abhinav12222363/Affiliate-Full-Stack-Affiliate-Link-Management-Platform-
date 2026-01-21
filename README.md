@@ -29,6 +29,7 @@ The platform is built for **scalability**, **speed**, and **ease of use**, power
 - JWT-based session security
 - RBAC (Role-Based Access Control)
 - Pagination
+  
 
 ### 🔗 Affiliate Link Management
 - Create & manage affiliate links
